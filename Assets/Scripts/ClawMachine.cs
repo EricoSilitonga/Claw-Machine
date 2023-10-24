@@ -8,22 +8,19 @@ public class ClawMachine : MonoBehaviour
     private StateMachine stateMachine;
     private State currentState;
 
-    private bool moveXNow;
-    private bool moveZNow;
     void Start()
     {
         stateMachine = new StateMachine();
-        currentState = State.Idle;
-        moveXNow = true;
-        moveZNow = false;
+        currentState = State.Open;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            currentState = State.Moving;
-        }
+        /*Debug.Log("Helo World");*/
+        currentState = State.Open;
+        stateMachine.ChangeState(currentState);
+        stateMachine.Update();
+        
     }
 }

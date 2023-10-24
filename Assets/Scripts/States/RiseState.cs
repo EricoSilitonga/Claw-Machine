@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : IState
+public class RiseState : IState
 {
+    
     public void EnterState()
     {
 
@@ -11,11 +12,13 @@ public class IdleState : IState
 
     public void UpdateState()
     {
-
+        
     }
 
     public void ExitState()
     {
-
+        
     }
+
 }
+

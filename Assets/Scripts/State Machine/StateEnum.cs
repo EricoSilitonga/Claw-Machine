@@ -9,8 +9,7 @@ namespace StateEnum
     {
         Open,
         Close,
-        Moving,
-        Idle
+        Rise
     }
 }
 

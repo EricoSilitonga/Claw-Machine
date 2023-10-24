@@ -22,11 +22,8 @@ public class StateMachine
             case State.Close:
                 currentState = new CloseState();
                 break;
-            case State.Moving:
-                currentState = new MoveState();
-                break;
-            case State.Idle:
-                currentState = new IdleState();
+            case State.Rise:
+                currentState = new RiseState();
                 break;
         }
         currentState.EnterState();
