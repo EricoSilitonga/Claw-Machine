@@ -10,12 +10,14 @@ public class ClawMachine : MonoBehaviour
     public static GameObject thisGo;
     public static float craneSpeed = 0.2f;
 
-    [Header("Animator Shit")]
-    public Animation clawAnimation;
+    [Header("Animator Stuff")]
+    public GameObject animatorGo;
+    public Animator clawAnimation;
     public static bool craneClose;
-    void Start()
+    void Awake()
     {
         stateMachine = new StateMachine();
+        clawAnimation = animatorGo.GetComponent<Animator>();
         currentState = State.Open;
         thisGo = this.gameObject;
     }
@@ -31,20 +33,13 @@ public class ClawMachine : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Space))
             {
-                //Bikin kode buat enable bool animasi dia nurunin claw-nya
+                Debug.Log("Space is pressed");
+                clawAnimation.SetBool("close", true);   
+            }
 
-                //Bikin checker apabila claw mendeteksi objek, akan pindah ke state close
-                if (currentState != State.Close)
-                {
-                    currentState = State.Close;
-                    stateMachine.ChangeState(currentState);
-                    stateMachine.Update();
-                }
-
-                /*//Bikin kode yang pindahin dia ke state rising
-                currentState = State.Rise;
-                stateMachine.ChangeState(currentState);
-                stateMachine.Update();*/
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                clawAnimation.SetBool("close", false);
             }
         }
     }

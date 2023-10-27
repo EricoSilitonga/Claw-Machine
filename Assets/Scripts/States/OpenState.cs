@@ -12,8 +12,8 @@ public class OpenState : IState
 
     public void UpdateState()
     {
-        float verticalInput = Input.GetAxisRaw("Vertical");
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
 
         Vector2 inputDirection = new Vector2(horizontalInput, verticalInput).normalized;
 
@@ -21,12 +21,12 @@ public class OpenState : IState
         float moveZ = inputDirection.y * ClawMachine.craneSpeed;
 
         MoveCrane(moveX, moveZ);
+
     }
 
     public void MoveCrane(float speedX, float speedZ)
     {
-        ClawMachine.thisGo.transform.Translate(speedX, ClawMachine.thisGo.transform.position.y , speedZ);
-        Debug.Log("Claw Machine is running");
+        ClawMachine.thisGo.transform.Translate(speedX, 0 , speedZ);
     }
 
     public void ExitState()
